@@ -1,0 +1,61 @@
+<div class="row pt-5">
+    <div class="col-6">
+        <ngx-chess-board
+            #board
+            [size]="size"
+            [lightTileColor]="lightTileColor"
+            (moveChange)="moveCallback($event)"
+            [dragDisabled]="dragDisabled"
+            [drawDisabled]="drawDisabled"
+            [darkTileColor]="darkTileColor"
+            [lightDisabled]="lightDisabled"
+            [darkDisabled]="darkDisabled"
+            [freeMode]="freeMode"
+        >
+        </ngx-chess-board>
+    </div>
+    <div class="col-6">
+        <div class="card" style="width: 40rem; background-color: #484136">
+            <div class="mx-auto p-2">
+                <img
+                    src="../../assets/VANGUARD-removebg-preview.png"
+                    class="card-img-top"
+                    style="max-width: 500px; max-height: 300px"
+                    alt="..."
+                />
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title text-center" style="color: #f0d9b5">Play Chess with VANGUARD Club chess</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li
+                    class="list-group-item"
+                    style="background-color: #484136; color: #f0d9b5"
+                    (click)="navigateTo('/playwithbot')"
+                >
+                    <img src="../../../assets/pc.png" alt="" class="logo" /> Play with Computer
+                </li>
+                <li
+                
+                class="list-group-item"
+                style="background-color: #484136; color: #f0d9b5"
+                (click)="navigateToLogin()"
+            >
+                <img src="../../../assets/gaming.png" alt="" class="logo" />Play with Friends
+            </li>
+            
+                <li
+                    class="list-group-item"
+                    style="background-color: #484136; color: #f0d9b5"
+                    (click)="navigateTo('/puzzles')"
+                >
+                    <img src="../../../assets/problem-solving.png" alt="" class="logo" /> Solve Puzzels
+                
+                </li>
+                <!-- <button (click)="sendPGNToServer()" href="http">Send PGN to Server</button> -->
+
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+.auth {
+  margin-top: 50px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.auth-card {
+  padding: 20px;
+}
+
+.auth-avatar {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-image {
+  max-width: 100px;
+  border-radius: 50%;
+}
+
+.forget-pass {
+  margin-top: 10px;
+}
+
+.sign-up {
+  margin-top: 20px;
+}
+
+/* Apply similar button styles as your home page */
+.btn-my {
+  background-color: #f9be5e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-my:hover {
+  background-color: #986006; /* Match the button color on hover */
+}
+
+/* Apply similar input styles as your home page */
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* Apply similar card styles as your home page */
+.card {
+  background-color: #484136;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Apply similar card title styles as your home page */
+.card-title {
+  color: #f9be5e; /* Match the button color */
+}
+
+/* Apply similar list group item styles as your home page */
+.list-group-item {
+  background-color: #484136;
+  color: #f9be5e; /* Match the button color */
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.list-group-item:hover {
+  background-color: #f9be5e; /* Match the button color on hover */
+  color: #fff; /* Change the text color to white on hover */
+}
+
+/* Apply styles to the text in the login form */
+.auth-card label {
+  color: #fff; /* Change label text color to white */
+}
+
+.auth-card .forget-pass a {
+  color: #f9be5e; /* Match "Forget Password?" text color to the button color */
+}
+
+.auth-card .login a {
+  color: #f9be5e; /* Match "Already have an account?" text color to the button color */
+}
+
+.auth-card .sign-up a {
+  color: #986006; /* Match "Sign Up here." text color to the button color */
+}

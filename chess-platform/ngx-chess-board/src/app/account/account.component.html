@@ -1,0 +1,74 @@
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-6">
+            <img src="../../assets/chesss.png" style="max-width: 700px; max-height: 700px; transform: translate(-10%);" />            
+        </div>
+        <div class="col-6">
+            <div class="card" style="max-width: 700px; max-height: 700px;    background-color: #484136">
+                <div class="mx-auto p-2">
+                    <!-- Bind the click event to trigger the file input -->
+                    <!-- <img [src]="userData.attachements" alt="User Image"> -->
+                    <!-- Hidden file input to trigger image selection -->
+                    <!-- Update the template to display the user image -->
+                    <div class="col-6">
+                        <img [src]="'http://localhost:3000/uploads/' + userData.attachments" style="width: 300px; height: 300px; object-fit: cover; border-radius: 50%;" />            
+                    </div>
+                    
+
+                    <!-- <input type="file" #fileInput style="display: none;" (change)="onImageSelected($event)" accept="image/*"> -->
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title text-center" style="color: #f0d9b5">Welcome , {{ user.name }}</h5>
+                </div>
+                <ul class="list-group list-group-flush" style="cursor: pointer;">
+                    <li
+                        class="list-group-item"
+                        style="background-color: #484136; color: #f0d9b5"
+                        (click)="navigateTo('/playwithbot')"
+                    >
+                        <img src="../../../assets/pc.png" alt="" class="logo" style="cursor: pointer;"/> Play with Computer
+                    </li>
+                    <li
+                        class="list-group-item"
+                        style="background-color: #484136; color: #f0d9b5"
+                        (click)="navigateTo('/alluserconnected')"
+                    >
+                        <img src="../../../assets/gaming.png" alt="" class="logo" style="cursor: pointer;"/> Play with Friends
+                    </li>
+                    <li
+                        class="list-group-item"
+                        style="background-color: #484136; color: #f0d9b5"
+                        (click)="navigateTo('/puzzles')"
+                    >
+                        <img src="../../../assets/problem-solving.png" alt="" class="logo" style="cursor: pointer;"/> Solve Puzzles
+                    </li>
+                    <li
+                    class="list-group-item"
+                    style="background-color: #484136; color: #f0d9b5"
+                    href="http"
+                    (click)="analysefromchesscom()"
+                >
+                    <img src="../../../assets/analyse.pgn" alt="" class="logo" style="cursor: pointer;"/> analyse a game from your chess.com account
+                </li>
+                    <li
+                        class="list-group-item"
+                        style="background-color: #484136; color: #f0d9b5"
+                        (click)="logout()"
+                    >
+                        <img src="../../../assets/exit.png" alt="" class="logo" style="cursor: pointer;"/> Logout
+                    </li>
+                    <!-- <li
+                        class="list-group-item"
+                        style="background-color: #484136; color: #f0d9b5"
+                        href="http"
+                        (click)="analysefromchesscom()"
+                    >
+                        <img src="../../../assets/problem-solving.png" alt="" class="logo" /> analyse a game from your chess.com account
+                    </li> -->
+                    <!-- <button (click)="analysefromchesscom()" href="http">analyse a game from your chess.com account</button> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

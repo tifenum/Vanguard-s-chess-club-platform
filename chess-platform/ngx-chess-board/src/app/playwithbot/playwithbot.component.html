@@ -1,0 +1,122 @@
+<!-- <app-gameover
+    *ngIf="gameOver"
+    (closeModalEvent)="gameOver = false"
+    (NextPuzzlesEvent)="analyzeGame(); gameOver = false"
+>
+</app-gameover>
+<div class="container mt-5" *ngIf="!selectedDifficulty">
+    <h1>Play with our bot</h1>
+    <div>
+        <label>Select Difficulty:</label>
+        <select [(ngModel)]="difficultyLevel" (change)="onDifficultyChange()">
+            <option value="hbib's dumb ai">Hbib's Dumb AI</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="difficult">Difficult</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+    </div>
+</div>
+<div *ngIf="selectedDifficulty" class="mt-5">
+    <ngx-chess-board #board [size]="size" [lightTileColor]="lightTileColor" (moveChange)="moveCallback($event)"
+        [dragDisabled]="dragDisabled" [drawDisabled]="drawDisabled" [darkTileColor]="darkTileColor"
+        [lightDisabled]="lightDisabled" [darkDisabled]="darkDisabled" [freeMode]="freeMode">
+    </ngx-chess-board>
+</div>
+ 
+<button
+type="button"
+class="btn btn mt-3 mb-3 w-25 mx-auto"
+*ngIf="gameOver"
+style="margin-left: auto; margin-right: 10px ;background-color: darkkhaki;"
+(click)="analyzeGame()"
+>
+analyse game
+</button> 
+<!-- <div class="container">
+    <h1>play with our bot</h1>
+</div><div>    <ngx-chess-board #board [size]="size" [lightTileColor]="lightTileColor" (moveChange)="moveCallback($event)"
+    [dragDisabled]="dragDisabled"
+    [drawDisabled]="drawDisabled"
+    [darkTileColor]="darkTileColor"
+    [lightDisabled]="lightDisabled"
+    [darkDisabled]="darkDisabled"
+    [freeMode]="freeMode"
+></ngx-chess-board> </div> -->
+
+<div class="container row mt-5" >
+    <div class="col-6" >
+        <ngx-chess-board
+            #board
+            [size]="size"
+            [lightTileColor]="lightTileColor"
+            (moveChange)="moveCallback($event)"
+            [dragDisabled]="dragDisabled"
+            [drawDisabled]="drawDisabled"
+            [darkTileColor]="darkTileColor"
+            [lightDisabled]="lightDisabled"
+            [darkDisabled]="darkDisabled"
+            [freeMode]="freeMode"
+        >
+        </ngx-chess-board>
+    </div>
+    
+    
+    <!-- <div class="col-6" *ngIf="!selectedDifficulty">
+        <h1>Play with our bot</h1>
+        <div>
+            <label>Select Difficulty:</label>
+            <select [(ngModel)]="difficultyLevel" (change)="onDifficultyChange()">
+                <option value="hbib's dumb ai">Hbib's Dumb AI</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="difficult">Difficult</option>
+                <option value="Advanced">Advanced</option>
+            </select>
+        </div>
+    </div> -->
+
+
+    <div class="col-6">
+        <div class="card" style="width: 40rem; background-color: #484136">
+            <div class="mx-auto p-2">
+                <img
+                    src="../../assets/VANGUARD-removebg-preview.png"
+                    class="card-img-top"
+                    style="max-width: 300px; max-height: 150px"
+                    alt="..."
+                />
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title text-center" style="color: #f0d9b5">Play Chess with our bot</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li
+                class="list-group-item"
+                style="background-color: #484136; color: #f0d9b5"
+                
+            >
+                <img src="../../assets/Capture d'écran 2024-05-05 175157.png" alt="" class="logo" /> Our Chess Bot 
+            </li>
+            <li class="list-group-item" style="background-color: #484136; color: #f0d9b5" (click)="onDifficultyChange('Hbib\'s Dumb AI')">
+
+                    <img src="../../../assets/facile.png" alt="" class="logo" /> easy
+                </li>
+                <li class="list-group-item" style="background-color: #484136; color: #f0d9b5" (click)="onDifficultyChange('easy')">
+
+                <img src="../../assets/systeme-nerveux.png" alt="" class="logo" />  medium
+            
+                <li class="list-group-item" style="background-color: #484136; color: #f0d9b5" (click)="onDifficultyChange('medium')">
+
+                    <img src="../../../assets/probleme.png" alt="" class="logo" /> difficult
+                </li>
+                <li class="list-group-item" style="background-color: #484136; color: #f0d9b5" (click)="onDifficultyChange('difficult')">
+
+                <img src="../../assets/croissance.png" alt="" class="logo" />  Advanced
+            </li>
+          
+            </ul>
+        </div>
+    </div>
+</div>

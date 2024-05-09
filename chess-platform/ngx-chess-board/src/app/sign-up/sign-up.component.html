@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-4 offset-md-4 col-sm-6 offset-sm-3">
+    <div class="card auth">
+      <div class="card-body auth-card">
+        <div class="auth-avatar">
+          <img src="https://pluspng.com/img-png/user-png-icon-account-avatar-human-male-man-men-people-person-download-svg-download-png-edit-icon-512.png" alt="user" class="user-image">
+        </div>
+        <form (submit)="signUp()" >
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" class="form-control" placeholder="Name" [(ngModel)]="userData.name">
+          </div>
+          <div class="form-group">
+            <label for="lastname">Last Name:</label>
+            <input type="text" name="lastname" class="form-control" placeholder="Last Name" [(ngModel)]="userData.lastname">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="text" name="phone" class="form-control" placeholder="Phone" [(ngModel)]="userData.phone">
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" name="email" class="form-control" placeholder="Email" [(ngModel)]="userData.email">
+          </div>
+          <div class="form-group">
+            <label for="chess_username">Chess.com Username:</label>
+            <input type="text" name="chess_username" class="form-control" placeholder="Chess.com Username" [(ngModel)]="userData.chess">
+          </div>
+          <div class="form-group">
+            <label for="attachments">Profile Photo:</label>
+            <input type="file" name="attachments" class="form-control" (change)="handleFileInput($event)">
+          </div>
+          
+        
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="password" class="form-control" placeholder="********" [(ngModel)]="userData.password">
+          </div>
+          <div class="form-group">
+            <label for="c_password">Confirm Password:</label>
+            <input type="password" name="c_password" class="form-control" placeholder="********" [(ngModel)]="userData.c_password">
+          </div>
+          <div class="form-group">
+            <label>Role:</label><br>
+            <label><input type="radio" name="role" value="user" [(ngModel)]="userData.role"> User</label><br>
+            <label><input type="radio" name="role" value="admin" [(ngModel)]="userData.role"> Admin</label>
+          </div>
+          <div class="text-center">
+            <input type="submit" class="btn btn-my" value="Sign Up">
+          </div>
+          <div class="text-center login">
+            <h6 style="color: white;">Already have an account?</h6>
+            <a routerLink="/login">Login</a> 
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<app-modal
+    *ngIf="modalOpen"
+    (closeModalEvent)="modalOpen = false"
+    (NextPuzzlesEvent)="nextPuzzles(); modalOpen = false"
+>
+</app-modal>
+<div class="row pt-5">
+    <div class="col-6">
+        <ngx-chess-board
+            #board
+            [size]="size"
+            [lightTileColor]="lightTileColor"
+            (moveChange)="moveCallback($event)"
+            [dragDisabled]="dragDisabled"
+            [drawDisabled]="drawDisabled"
+            [darkTileColor]="darkTileColor"
+            [lightDisabled]="lightDisabled"
+            [darkDisabled]="darkDisabled"
+            [freeMode]="freeMode"
+        >
+        </ngx-chess-board>
+    </div>
+    <div class="col-6">
+      <div class="row bg-dark">
+        <div *ngIf="!getPuzzles" class="m-3">
+            <div class="col-md">
+                <h5 class="text-center">{{this.datapuzz.Themes[0]}}</h5>
+            </div>
+        </div>
+        <button
+        *ngIf="getPuzzles"
+            type="button"
+            class="btn btn mt-3 mb-3 w-25 mx-auto"
+            style="background-color: #FFE07D;"
+            (click)="getPuzzlesByFilter()"
+        >
+            Filter 
+        </button>
+        <hr>
+      <div style="max-height: 300px; overflow-y: auto;">
+        <div id="lasteMoveMessage"></div>
+        <div id="messageContainer"></div>
+        <button
+            type="button"
+            class="btn btn mt-3 mb-3 w-25 mx-auto "
+            *ngIf="nexteMoveBool"
+            style="margin-left: auto; margin-right: 10px ;background-color:#FFE07D;"
+            (click)="nextPuzzles()"
+        >
+            Next Puzzles
+        </button>
+        <div id="falseMove" *ngIf="bool">
+            <button
+                type="button"
+                class="btn btn mt-3 mb-3 w-25 mx-auto"
+                style="margin-left: auto; margin-right: 10px;background-color: #C8574D;"
+                (click)="reload()"
+            >
+                reload
+            </button>
+        </div>
+      </div>
+      <hr>
+      <img src="../../assets/piste-precedente.png" class="logo prev">
+
+      <img src="../../assets/bouton-suivant.png" class="logo next">
+      </div>
+    </div>
+</div>

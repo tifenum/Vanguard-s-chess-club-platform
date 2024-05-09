@@ -1,0 +1,54 @@
+CREATE OR REPLACE PROCEDURE VoitureMarque AS
+BEGIN
+  FOR c IN (SELECT DISTINCT c.idclt, c.nom
+              FROM clients c
+                   JOIN locations l ON c.idclt = l.idclt
+                   JOIN voitures v ON l.idv = v.idv
+                   JOIN marques m ON v.idmarque = m.idmarque
+             WHERE m.nomMarque = 'PEUGEOT'
+             GROUP BY c.idclt, c.nom
+            HAVING COUNT(DISTINCT v.idv) = (SELECT COUNT(*) FROM voitures WHERE idmarque = 'M1')) 
+  LOOP
+    DBMS_OUTPUT.PUT_LINE('Client ID: ' || c.idclt || ', Nom: ' || c.nom);
+  END LOOP;
+END VoitureMarque;
+/
+CREATE OR REPLACE FUNCTION PrixLocation_Total(client_id IN NUMBER) RETURN NUMBER IS
+  total_price NUMBER := 0;
+BEGIN
+  FOR loc_rec IN (SELECT prixloc
+                    FROM locations
+                   WHERE EXTRACT(YEAR FROM dateloc) = 2022 AND idclt = client_id)
+  LOOP
+    total_price := total_price + loc_rec.prixloc;
+  END LOOP;
+  RETURN total_price;
+END PrixLocation_Total;
+/
+DECLARE
+  v_idclt Clients.idclt%TYPE;
+  v_prix_total NUMBER;
+BEGIN
+  FOR c IN (SELECT DISTINCT idclt FROM Locations WHERE EXTRACT(YEAR FROM dateloc) = 2022)
+  LOOP
+    v_idclt := c.idclt;
+    v_prix_total := PrixLocation_Total(v_idclt);
+    DBMS_OUTPUT.PUT_LINE('Client ' || v_idclt || ' : Prix de location total en 2022 = ' || v_prix_total);
+  END LOOP;
+END;
+/
+CREATE OR REPLACE TRIGGER CheckDateConstraint
+BEFORE INSERT OR UPDATE ON locations
+FOR EACH ROW
+DECLARE
+  car_construction_date DATE;
+BEGIN
+  SELECT dateconstruction INTO car_construction_date
+    FROM voitures
+   WHERE idv = :NEW.idv;
+
+  IF :NEW.dateloc < car_construction_date THEN
+    RAISE_APPLICATION_ERROR(-20001, 'Error: Rental date cannot be before the construction date of the car.');
+  END IF;
+END CheckDateConstraint;
+/

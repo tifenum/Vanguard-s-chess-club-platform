@@ -1,0 +1,15 @@
+.board-container {
+    display: flex; /* Use flexbox layout */
+  }
+  
+  .eval-bar-container {
+    flex: 0 0 auto; /* Allow the container to grow and shrink, but don't allow it to grow larger than its content */
+    width: 200px; /* Set a fixed width for the evaluation bar */
+    height: 100%; /* Make the evaluation bar container take up the full height of its parent */
+    margin-right: 20px; /* Add some spacing between the evaluation bar and the chess board */
+  }
+  .logo {
+    max-width: 100px;
+    max-height: 50px; 
+    cursor: pointer;
+  }
