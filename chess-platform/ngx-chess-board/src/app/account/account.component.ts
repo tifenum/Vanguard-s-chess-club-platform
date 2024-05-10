@@ -5,11 +5,22 @@ import { HttpClient } from '@angular/common/http';
 
 import { Chess } from 'chess.js';
 import { CommonModule } from '@angular/common';
+import { NgxChessBoardModule } from 'ngx-chess-board';
 
+import {
+    MoveChange,
+    NgxChessBoardComponent,
+    PieceIconInput
+} from 'ngx-chess-board';
+
+import {
+    ColorInput,
+    PieceTypeInput
+} from 'ngx-chess-board';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  imports: [CommonModule],
+  imports: [CommonModule,NgxChessBoardModule],
   standalone : true,
   styleUrls: ['./account.component.scss']
 })
@@ -31,6 +42,20 @@ export class AccountComponent implements OnInit {
   selectedImage: string | ArrayBuffer | null = null;
   userId: string | null;
 
+  public darkTileColor = '#484136'; // Dark brown color
+  public lightTileColor = '#f0d9b5'; // Light brown color
+
+
+  public size = 625;
+  public dragDisabled = false;
+  public drawDisabled = false;
+  public lightDisabled = true   ;
+  public darkDisabled = true;
+  public freeMode = false;
+  public addPieceCoords: string = 'a4';
+  public selectedPiece = '1';
+  public selectedColor = '1';
+  public pgn: string = '';
 image: any; 
 selectImage(e:any){
   this.image=e.targer.files[0];

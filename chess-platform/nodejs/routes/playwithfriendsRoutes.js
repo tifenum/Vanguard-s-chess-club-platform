@@ -14,7 +14,7 @@ router.post(
 router.post("/accept", playwithfriendsController.acceptInvitation);
 router.post(
   "/decline",
-  authenticateToken,
+  
   playwithfriendsController.declineInvitation
 );
 router.get("/invitations/:to", async (req, res) => {

@@ -74,7 +74,7 @@
         [attr.width]="engineFacade.heightAndWidth"
         style="position:absolute; top:0; pointer-events: none"
     >
-        <defs *ngFor="let color of ['red', 'green', 'blue', 'orange']">
+        <defs *ngFor="let color of ['black', 'green', 'blue', 'orange']">
             <marker
                 [id]="randomId + color + 'Arrow'"
                 markerHeight="13"
@@ -91,16 +91,16 @@
         </defs>
         <line
             class="arrow"
-            [attr.marker-end]="'url(#' + randomId + arrow.end.color + 'Arrow)'"
+            [attr.marker-end]="'url(#' + randomId + 'black' + 'Arrow)'"
             [attr.stroke]="arrow.end.color"
-            [attr.x1]="arrow.start.x"
-            [attr.x2]="arrow.end.x"
+            [attr.x1]="arrow.start.x+200"
+            [attr.x2]="arrow.end.x+200"
             [attr.y1]="arrow.start.y"
-            [attr.y2]="arrow.end.y"
+            [attr.y2]="arrow.end.y "
             *ngFor="let arrow of engineFacade.drawProvider.arrows$ | async"
         ></line>
         <circle
-            [attr.cx]="circle.drawPoint.x"
+            [attr.cx]="circle.drawPoint.x+200"
             [attr.cy]="circle.drawPoint.y"
             [attr.r]="engineFacade.heightAndWidth / 18"
             [attr.stroke]="circle.drawPoint.color"

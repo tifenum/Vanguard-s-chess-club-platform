@@ -48,7 +48,7 @@ export class AllUserConnectedComponent implements OnInit {
   getConnectedUsers(): void {
     this.userService.getConnectedUsers().subscribe(
       (users) => {
-        this.connectedUsers = users;
+        this.connectedUsers = this.removeElementById(users, this.toUserId) ;
         console.log(this.connectedUsers)
       },
       (error) => {
@@ -56,7 +56,19 @@ export class AllUserConnectedComponent implements OnInit {
       }
     );
   }
+   removeElementById(array, idToRemove) {
+    // Recherche de l'index de l'élément ayant l'id à supprimer
+    const indexToRemove = array.findIndex(item => item._id === idToRemove);
 
+    // Vérification si l'index a été trouvé
+    if (indexToRemove !== -1) {
+        // Suppression de l'élément du tableau
+        array.splice(indexToRemove, 1);
+    }
+
+    // Retourner le tableau modifié
+    return array;
+}
   navigateTo(url: string, id1: string ,id2:string): void {
     // Construire l'URL avec l'ID en tant que paramètre
     const fullUrl = `${url}?idinv=${id1}&idplayer=${id2}`;
@@ -108,5 +120,19 @@ export class AllUserConnectedComponent implements OnInit {
         console.error('Error fetching invitations:', error);
       }
     });
+  }
+
+  declineInvitation(invitationId:string) {
+    this.invitationService.declineInvitation(invitationId).subscribe(
+      response => {
+        console.log('Invitation declined successfully:', response);
+        this.loadInvitations();
+        // Gérer la réponse ou rediriger l'utilisateur après le refus de l'invitation
+      },
+      error => {
+        console.error('Error declining invitation:', error);
+        // Gérer l'erreur
+      }
+    );
   }
 }

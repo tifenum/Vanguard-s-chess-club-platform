@@ -1,7 +1,19 @@
 <div class="container pt-5">
+
     <div class="row">
         <div class="col-6">
-            <img src="../../assets/chesss.png" style="max-width: 700px; max-height: 700px; transform: translate(-10%);" />            
+            <ngx-chess-board
+            #board
+            [size]="size"
+            [lightTileColor]="lightTileColor"
+            [dragDisabled]="dragDisabled"
+            [drawDisabled]="drawDisabled"
+            [darkTileColor]="darkTileColor"
+            [lightDisabled]="lightDisabled"
+            [darkDisabled]="darkDisabled"
+            [freeMode]="freeMode"
+        >
+        </ngx-chess-board>
         </div>
         <div class="col-6">
             <div class="card" style="max-width: 700px; max-height: 700px;    background-color: #484136">
@@ -13,7 +25,7 @@
                     <div class="col-6">
                         <img [src]="'http://localhost:3000/uploads/' + userData.attachments" style="width: 300px; height: 300px; object-fit: cover; border-radius: 50%;" />            
                     </div>
-                    
+             
 
                     <!-- <input type="file" #fileInput style="display: none;" (change)="onImageSelected($event)" accept="image/*"> -->
                 </div>

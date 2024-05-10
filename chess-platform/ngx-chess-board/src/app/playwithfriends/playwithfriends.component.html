@@ -1,16 +1,27 @@
+<app-gameover
+    *ngIf="gameOver"
+    (closeModalEvent)="gameOver = false"
+    (NextPuzzlesEvent)="analyzeGame(); gameOver = false"
+></app-gameover>
 <div class="container pt-5">
     <div class="row">
         <div class="col-6">
             <div class="row">
-                <div class="col-2">
-                    
-                    <img src="../../assets/user.png" style="max-width: 50px;" alt="">
+          
+                <div class="col-2 mt-2" *ngIf="!userbool">
+                    <img [src]="'http://localhost:3000/uploads/' + userAdver.attachments" style="max-width: 50px; object-fit: cover; border-radius: 50%;" />            
                 </div>
-                <div class="col-4">
+                <div class="col-2 mt-2" *ngIf="userbool">
+                    <img [src]="'http://localhost:3000/uploads/' + invetation[0].attachments" style="max-width: 50px; object-fit: cover; border-radius: 50%;" />            
+                </div>
+                <div class="col-4" *ngIf="!userbool">
                     <br>
-                    <p>foulen ben foulen </p>
+                    <h5>{{userAdver.name}} {{userAdver.lastname}} </h5>
                 </div>
-    
+                <div class="col-4" *ngIf="userbool">
+                    <br>
+                    <h5>{{invetation[0].name}} {{invetation[0].lastname}} </h5>
+                </div>
                 <div class="alert alert-dark col-3" style="background-color:black ;">
                     <app-clock [clockOpened]="clockOpenedPlay1" class="text-light text-center"></app-clock>
                 </div>
@@ -31,12 +42,12 @@
             <div class="row">
                 <br>
                 <div class="col-2 mt-2">
-                    
-                    <img src="../../assets/user.png" style="max-width: 50px;" alt="">
+                    <img [src]="'http://localhost:3000/uploads/' + user.attachments" style="max-width: 50px; object-fit: cover; border-radius: 50%;" />            
                 </div>
+               
                 <div class="col-4">
                     <br>
-                    <p>foulen ben falten </p>
+                    <h5>{{user.name}} {{user.lastname}}</h5>
                 </div>
                 <div class="alert alert-light col-3 mt-3" >
                     <app-clock [clockOpened]="clockOpenedPlay2" class="text-center"></app-clock>
@@ -66,14 +77,5 @@
             </div>
 
         </div>
-        <button
-        type="button"
-        class="btn btn mt-3 mb-3 w-25 mx-auto"
-        *ngIf="gameOver"
-        style="margin-left: auto; margin-right: 10px ;background-color: darkkhaki;"
-        (click)="analyzeGame()"
-        >
-        analyse game
-        </button>
     </div>
 </div>

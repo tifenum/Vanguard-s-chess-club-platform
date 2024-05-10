@@ -134,4 +134,7 @@ getUserData(): Observable<any> {
       })
     );
   }
+  getUserById(userId: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/getUserById/${userId}`);
+  }
 }

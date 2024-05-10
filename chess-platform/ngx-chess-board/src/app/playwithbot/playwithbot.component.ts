@@ -1,14 +1,3 @@
-
-// @Component({
-//   selector: 'app-playwithbot',
-//   standalone: true,
-//   imports: [],
-//   templateUrl: './playwithbot.component.html',
-//   styleUrl: './playwithbot.component.scss'
-// })
-// export class PlaywithbotComponent {
-
-// }
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { move, aiMove } from 'js-chess-engine';
@@ -105,6 +94,8 @@ export class PlaywithbotComponent {
     public selectedColor = '1';
     public pgn: string = '';
     public ssforces :string = ' 1/2-1/2';
+    public messageTableMove :string ='';
+
     onDifficultyChange(name: string): void {
         this.selectedDifficulty = true;
 
@@ -226,11 +217,35 @@ export class PlaywithbotComponent {
     //         }
     //     );
     // }
-
+    public getChessPieceName(pieceAbbreviation) {
+        switch (pieceAbbreviation.toLowerCase()) {
+            case 'k':
+                return "King";
+            case 'q':
+                return "Queen";
+            case 'r':
+                return "Rook";
+            case 'b':
+                return "Bishop";
+            case 'n':
+                return "Knight";
+            case 'p':
+                return "Pawn";
+            default:
+                return "<td>Unknown Piece</td>";
+        }
+    }
     public async moveCallback(move: MoveChange): Promise<void> {
         this.fen = this.boardManager.getFEN();
         this.pgn = this.boardManager.getPGN();
         console.log(move);
+        this.messageTableMove+=`    
+        <th scope="row">  </th> 
+        <td>${move.move}</td>
+        <td>${move.piece}</td>
+        
+        </tr>`
+        document.getElementById('tableMove').innerHTML = this.messageTableMove;
         const chess = new Chess(this.fen);
         let move1 =this.chess1.move(move.move);
         if(move1.captured){
@@ -266,7 +281,14 @@ console.log(this.gameOver);
                 this.PredictionsService.sendFen(move.fen).subscribe(
                     async response => {
                         await this.utilsService.sleep(500); // Sleep for 1000 milliseconds (1 second)
-                        chess.move(response.bestMove);
+                        this.messageTableMove+=`    
+                        <th scope="row">  </th> 
+                        <td>${response.bestMove}</td>
+                        <td>${this.getChessPieceName(chess.move(response.bestMove).piece)
+                        }</td>
+                        </tr>`
+                        document.getElementById('tableMove').innerHTML = this.messageTableMove;
+            
                         if(chess.isCheckmate()){
                             this.checksound.play();
                             console.log("game over");
@@ -303,7 +325,7 @@ console.log(this.gameOver);
                 error => {
                     console.error('Error getting prediction:', error);
                 }
-            );
+            );         
         }
 
         else{
@@ -313,7 +335,7 @@ console.log(this.gameOver);
             const value = originalString[key];
             const finaly = key + value;
             const lowercaseString = finaly.toLowerCase();
-            console.log(lowercaseString);
+            console.log('',lowercaseString);
             await this.utilsService.sleep(500); // Sleep for 1000 milliseconds (1 second)
             chess.move(lowercaseString);
             if(chess.isCheckmate()){
@@ -347,9 +369,24 @@ console.log(this.gameOver);
                 this.moveSound.play();
             }
             this.boardManager.setFEN(chess.fen());
+
+
+
+            this.messageTableMove+=`    
+            <th scope="row">  </th> 
+            <td>${lowercaseString}</td>
+            <td>${this.getChessPieceName(move1.piece)}</td>
+            
+            </tr>`
+            document.getElementById('tableMove').innerHTML = this.messageTableMove;
         }
+  
         }
         console.log(this.chess1.pgn())
+        
+
+
+
     }
     // public async moveCallback(move: MoveChange): Promise<void> {
     //     this.fen = this.boardManager.getFEN();

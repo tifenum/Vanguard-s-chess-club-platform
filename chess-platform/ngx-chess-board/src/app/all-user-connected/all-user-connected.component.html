@@ -1,53 +1,53 @@
 <div class="mt-5">
-    <div class="modal-background">
-      <h1 class="text-center"> all user connected </h1>
-       <div class="w-75 mx-auto ">
-        <table class="table table-dark table-striped border-warning">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">LastName</th>
-              <th scope="col">selecte</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of connectedUsers;let i = index;">
-              <th scope="row">{{i+1}}</th>
-              <td>{{item.name}}</td>
-              <td>{{item.lastname}}</td>
-              <td>
-                <div>
-                 
-                  <button class="btn" style="background-color: #FFE07D;"(click)="sendInvitation(item._id)">Send Invitation</button>
-                </div>
-              </td>
-            </tr>
-         
-          </tbody>
-        </table>
-       </div>
-  
-    </div>
-    <div class="card text-bg-dark border-warning mx-auto w-75" *ngIf="inv">
-      <div class="card-header mx-auto "><h3>Invitation</h3></div>
-      <div class="card-body" >
-        <div *ngFor="let item of invitations" class="row mb-3">
-          <h5 class="col-7">{{item.name}} {{item.lastname}} invited you to a game</h5>
-      
-          <button (click)="acceptInvitation(item)" class="btn col-2 mx-auto" style="background-color: #D9F3E4;">Accept Invitation</button>
-          <button  class="btn col-2 mx-auto" style="background-color:#C8574D;">Decline Invitation</button>
-    
-         </div>
-      </div>
-    </div>
-    <!-- <div *ngIf="inv">
-      <h1 class="text-center">Accept Invitation</h1>
-     <div *ngFor="let item of invitations">
-      <label for="invitationId">you have an invitation From {{item.name}} {{item.lastname}} </label>
-  
-      <button (click)="acceptInvitation(item)">Accept Invitation</button>
+  <div class="modal-background">
+    <h1 class="text-center"> all connected users</h1>
+     <div class="w-75 mx-auto ">
+      <table class="table table-dark table-striped border-warning">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">LastName</th>
+            <th scope="col">selecte</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of connectedUsers;let i = index;">
+            <th scope="row">{{i+1}}</th>
+            <td>{{item.name}}</td>
+            <td>{{item.lastname}}</td>
+            <td>
+              <div>
+               
+                <button class="btn" style="background-color: #FFE07D;"(click)="sendInvitation(item._id)">Send Invitation</button>
+              </div>
+            </td>
+          </tr>
+       
+        </tbody>
+      </table>
      </div>
-    </div> -->
-     
+
   </div>
+  <div class="card text-bg-dark border-warning mx-auto w-75" *ngIf="inv">
+    <div class="card-header mx-auto "><h3>Invitation</h3></div>
+    <div class="card-body" >
+      <div *ngFor="let item of invitations" class="row mb-3">
+        <h5 class="col-7">{{item.name}} invited you to a game</h5>
+    
+        <button (click)="acceptInvitation(item)" class="btn col-2 mx-auto" style="background-color: #D9F3E4;">Accept Invitation</button>
+        <button (click)="declineInvitation(item._id)"  class="btn col-2 mx-auto" style="background-color:#C8574D;">Decline Invitation</button>
+  
+       </div>
+    </div>
+  </div>
+  <!-- <div *ngIf="inv">
+    <h1 class="text-center">Accept Invitation</h1>
+   <div *ngFor="let item of invitations">
+    <label for="invitationId">you have an invitation From {{item.name}} {{item.lastname}} </label>
+
+    <button (click)="acceptInvitation(item)">Accept Invitation</button>
+   </div>
+  </div> -->
+   
+</div>

@@ -7,7 +7,6 @@ function authenticateToken(req, res, next) {
   const token = authHeader && authHeader.split(' ')[1];
 
   if (!token) {
-    console.log("ereeeeeeeeeerrr");
     return res.sendStatus(401); // Unauthorized
   }
 
