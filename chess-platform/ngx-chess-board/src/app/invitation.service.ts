@@ -9,7 +9,7 @@ import { filter } from 'rxjs/operators';
 export class InvitationService {
   constructor(private http: HttpClient, private websocketService: Websocket2Service) { }
 
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'http://localhost:3000/api/invitations';
 
   // Vos autres méthodes de service ici...
 

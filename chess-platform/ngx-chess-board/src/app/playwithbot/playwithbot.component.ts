@@ -102,7 +102,7 @@ export class PlaywithbotComponent {
         // You can implement logic here based on the selected difficulty level
         switch (name) {
             case "Hbib's Dumb AI":
-                this.difficulty=0;
+                this.difficulty=1;
                 break;
             case 'Advanced':
                 this.difficulty=4;

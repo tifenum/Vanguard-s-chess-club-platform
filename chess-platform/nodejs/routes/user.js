@@ -80,7 +80,6 @@ router.post("/login", (req, res) => {
         };
   
         const token = jwt.sign(payload, "admin");
-  
         res.status(200).send({ user: payload, token: token });
       })
       .catch((err) => {

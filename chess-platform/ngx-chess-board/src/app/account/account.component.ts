@@ -99,6 +99,8 @@ selectImage(e:any){
 logoutUser() {
   this.userService.logout(this.userId).subscribe(
     () => {
+      console.log(this.userData.attachments);
+
       // Gérer le succès de la déconnexion
       console.log('Logged out successfully');
       // Rediriger l'utilisateur vers la page de connexion ou autre page appropriée
@@ -130,7 +132,6 @@ ngOnInit(): void {
       this.userData = userData1; // Assign the fetched user data to userData
       this.user = userData1;
       this.chesscom = userData1.chess;
-      console.log(this.userData.attachments);
       this.userId = this.userService.getUserIdFromToken();
 
     },  

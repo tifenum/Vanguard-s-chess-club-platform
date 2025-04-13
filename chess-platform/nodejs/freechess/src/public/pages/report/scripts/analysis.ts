@@ -226,13 +226,14 @@ try {
         },
         body: JSON.stringify({}),
     });
-
+    
     if (!pgnResponse.ok) {
         throw new Error("Failed to fetch PGN data from the server.");
     }
-
     // Assign the response from the server's PGN to a variable called pgn
     pgn = await pgnResponse.json();
+    console.log("aaaaaaaaaaaaaaaaaaa"+pgn);
+
 } catch (error) {
     console.error("Error fetching PGN data:", error);
     return logAnalysisError("Failed to fetch PGN data from the server.");

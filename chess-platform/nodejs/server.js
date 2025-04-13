@@ -4,12 +4,12 @@
     const http = require('http');
     const socketIO = require('socket.io');
     const mongoose = require('./config/connect.js');
-    const chessGameRouter = require('./routes/ChessGame');
-    const tf = require('@tensorflow/tfjs-node');
+    const chessGameRouter = require('./routes/ChessGame.js');
+    // const tf = require('@tensorflow/tfjs-node');
     const path = require('path');
 
-    const playwithfriendsRoutes = require('./routes/playwithfriendsRoutes');
-    const connectedUsers= require('./routes/connectedUser')
+    const playwithfriendsRoutes = require('./routes/playwithfriendsRoutes.js');
+    const connectedUsers= require('./routes/connectedUser.js')
 
     const User = require('./routes/user.js')
     const puzzleRoutes = require('./routes/puzzle');
